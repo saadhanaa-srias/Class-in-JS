@@ -1,0 +1,74 @@
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="filename.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h2>Static and Non-Static Inheritance</h2>
+  <p id="staticOutput"></p>
+  <p id="nonStaticOutput"></p>
+
+  <script>
+      class Person {
+          constructor(name) {
+              this.name = name;
+          }
+
+          sayHello() {
+              return `Hello, my name is ${this.name}`;
+          }
+
+          // Non-static method
+          introduce() {
+              return `I am ${this.name}`;
+          }
+
+          // Static method
+          static staticGreeting() {
+              return "Hello from static method!";
+          }
+      }
+
+      // Subclass with a static method
+      class Student extends Person {
+          constructor(name, grade) {
+              super(name);
+              this.grade = grade;
+          }
+
+          // Non-static method
+          study() {
+              return `${this.name} is studying in grade ${this.grade}`;
+          }
+      }
+
+      // Subclass without a static method
+      class Teacher extends Person {
+          constructor(name, subject) {
+              super(name);
+              this.subject = subject;
+          }
+
+          // Non-static method
+          teach() {
+              return `${this.name} teaches ${this.subject}`;
+          }
+      }
+
+      // Create instances of the subclasses
+      const student1 = new Student("Alice", 10);
+      const teacher1 = new Teacher("Mr. Smith", "Math");
+
+      // Access non-static methods
+      document.getElementById("nonStaticOutput").innerHTML =
+          `${student1.introduce()} ${student1.study()}<br>${teacher1.introduce()} ${teacher1.teach()}`;
+
+      // Access the static method through the class itself
+      document.getElementById("staticOutput").innerHTML =
+          `${Person.staticGreeting()}`;
+  </script></body></html>
